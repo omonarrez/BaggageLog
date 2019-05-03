@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Executive Flight Centre</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- DatePicker CSS -->
+  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+  <link rel="stylesheet" type="text/css" href="http://localhost:3000/timpicker/stylesheets/wickedpicker.css">
+</head>
+<body  style="background-color:#eff3f8">
+  <style type="text/css">
+
+
+    .col-form-label{
+      text-align: right;
+    }
+    #navbarResponsive ul{
+      text-align: center;
+    }
+
+    @media (max-width: 550px){
+      /*.navbar-brand img{
+        width: 100%;
+      }*/
+
+    }
+    @media (max-width: 575px){
+      .col-form-label{
+        text-align: left;
+      }
+    }
+    @media (max-width: 990px){
+      .navbar-brand{
+        width: 65%;
+      }
+      .avatar a img{
+        width: 20%;
+      }
+      .bg-dark-bottom{
+        background-color: #444d58 !important;
+      }
+      .img-circle{
+        width: 6%;
+      }
+    }
+    @media (min-width: 992px){
+      .navbar-brand{
+        width: 65%;
+      }
+      .avatar a img{
+        width: 50%;
+      }
+      .avatar a{
+        text-align: right;
+      }
+      .avatar-name{
+        margin: auto 0;
+      }
+      .bg-dark-bottom{
+        background-color: #444d58 !important;
+      }
+      .img-circle{
+        width: 15%;
+      }
+    }
+    .bg-dark-top{
+      background-color: #ffffff !important;
+    }
+
+    .gj-textbox-md{
+      border: 1px solid #ced4da !important;
+        border-bottom: 1px solid #ced4da !important;
+        padding: .375rem .75rem !important;
+    }
+    .gj-timepicker-md [role=right-icon]{
+      right: 6px;
+        top: 6px;
+        background: #fff;
+    }
+    #hide-show-1, #hide-show-2, .issuetextarea{
+      display: none;
+    }
+    .footer-bottom {
+        background: #444d58 none repeat scroll 0 0;
+        padding: 10px 0;
+    }
+    .copyright > p {
+        margin-bottom: 0;
+        color: #f2f2f2;
+    }
+    .navbar-dark .navbar-nav .nav-link {
+    color: #fff;
+    }
+
+    input:placeholder-shown {
+    font-style: italic;
+    }
+    textarea:placeholder-shown {
+    font-style: italic;
+    }
+
+    #mckay, #richardson{
+      display: none;
+    }
+
+  </style>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-dark-top static-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">
+          <img src="http://localhost:3000/images/EFCLogo_small.png" alt="">
+        </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item avatar">
+        </li>
+        <li class="dropdown dropdown-user dropdown-dark">
+              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                <img alt="" class="img-circle" src="http://localhost:3000/images/pic.png">
+                <span class="username username-hide-mobile">Olivia Monarrez</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-default">
+                <li>
+                  <a href="/profile">
+                    <i class="icon-user"></i> My Profile </a>
+                </li>
+
+                <li class="divider"> </li>
+                <li>
+                  <a href="/disconnect.php">
+                    <i class="icon-key"></i> Log Out </a>
+                </li>
+              </ul>
+            </li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark-bottom static-top">
+  <div class="container">
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+        <li class="nav-item avatar">
+          <a class="nav-link" href="/">Main</a>
+        </li>
+        <li class="nav-item avatar">
+          <a class="nav-link" href="#">POS</a>
+        </li>
+        <li class="nav-item avatar">
+          <a class="nav-link" href="#">Operations</a>
+        </li>
+        <li class="nav-item avatar">
+          <a class="nav-link" href="#">Maintenance</a>
+        </li>
+        <li class="nav-item avatar">
+          <a class="nav-link" href="#">QC</a>
+        </li>
+        <li class="nav-item avatar">
+          <a class="nav-link" href="#">Reports</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
+
+
+<!-- Page Content -->
+<div class="container">
+  <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12" style="padding: 15px;">
+        <div class="text-center">
+          <h4>Baggage Delivery from Aerodrome to Camp</h4>
+          <p>This form is used to track baggage delivery times for single or multiple flights arriving in YNR</p>
+        </div>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <% if (msg) { %>
+        <div class="alert alert-success" role="alert">
+          Added to record!
+        </div>
+      <% } %>
+
+      <form method="post" action="/add">
+        <div class="row justify-content-center">
+          <div class="col-sm-6">
+            <label for="datepicker">Date</label>
+            <input type="text" class="form-control" name="date" id="datepicker" placeholder="//" autocomplete="off">
+          </div>
+          <div class="col-sm-6">
+            <label for="flightNumber">Flight Number</label>
+            <input type="text" class="form-control" name="flightNumber" placeholder= "Enter your answer" autocomplete="off">
+          </div>
+        </div>
+
+          <div class="row justify-content-center" style="padding: 15px 0px 0px;">
+            <div class="col-sm-4">
+          <label for="satof">Schedule Arrival Time of flight</label>
+              <input type="text" class="form-control" name="satof" id="timepicker1" autocomplete="off">
+          </div>
+        <div class="col-sm-4">
+          <label for="aatof">Actual Arrival Time of flight</label>
+              <input type="text" class="form-control" name="aatof" id="timepicker2" autocomplete="off">
+          </div>
+        <div class="col-sm-4">
+          <label for="tmcdio">Time main cabin door is opened</label>
+              <input type="text" class="form-control" name="tmcdio" id="timepicker3" autocomplete="off">
+          </div>
+        </div>
+        <fieldset class="form-group">
+          <div class="row justify-content-center" style="padding: 15px 0px 0px;">
+            <legend class="col-form-label col-sm-6 pt-0">Was there another flight?</legend>
+            <div class="col-sm-6">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="wtaf" id="wtaf" value="1">
+                <label class="form-check-label" for="wtaf1">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="wtaf" id="wtaf" value="0">
+                <label class="form-check-label" for="wtaf2">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+
+        <!-- Hide Show div 1 -->
+        <div id="hide-show-1">
+          <div class="form-group row" style="padding: 15px 10px 10px;">
+            <label for="flightNumber1">Flight Number</label>
+            <input type="text" class="form-control" name="flightNumber1" placeholder="Enter your answer" autocomplete="off">
+          </div>
+          <div class="row justify-content-center" style="padding: 15px 0px 0px;">
+            <div class="col-sm-4">
+              <label for="satof1">Schedule Arrival Time of flight</label>
+              <input type="text" class="form-control" name="satof1" id="timepicker01"autocomplete="off">
+            </div>
+            <div class="col-sm-4">
+              <label for="aatof1">Actual Arrival Time of flight</label>
+              <input type="text" class="form-control" name="aatof1" id="timepicker02"autocomplete="off">
+            </div>
+            <div class="col-sm-4">
+              <label for="tmcdio1">Time main cabin door is opened</label>
+              <input type="text" class="form-control" name="tmcdio1" id="timepicker03"autocomplete="off">
+            </div>
+          </div>
+          <fieldset class="form-group">
+            <div class="row" style="padding: 15px 0px 0px;">
+              <legend class="col-form-label col-sm-6 pt-0">Was there another flight?</legend>
+              <div class="col-sm-6">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="wtaf1" id="wtaf1" value="1">
+                  <label class="form-check-label" for="wtaf01">
+                    Yes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="wtaf1" id="wtaf1" value="0">
+                  <label class="form-check-label" for="wtaf02">
+                    No
+                  </label>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+        <!-- Hide Show div 1 -->
+
+
+        <!-- Hide Show div 2 -->
+        <div id="hide-show-2">
+          <div class="form-group row" style="padding: 15px 10px 10px;">
+            <label for="flightNumber2">Flight Number</label>
+            <input type="text" class="form-control" name="flightNumber2" placeholder="Enter your answer" autocomplete="off">
+          </div>
+          <div class="row justify-content-center" style="padding: 15px 0px 15px;">
+            <div class="col-sm-4">
+              <label for="satof2">Schedule Arrival Time of flight</label>
+                  <input type="text" class="form-control" name="satof2" id="timepicker001"autocomplete="off">
+              </div>
+            <div class="col-sm-4">
+              <label for="aatof2">Actual Arrival Time of flight</label>
+                  <input type="text" class="form-control" name="aatof2" id="timepicker002" autocomplete="off">
+              </div>
+            <div class="col-sm-4">
+              <label for="tmcdio2">Time main cabin door is opened</label>
+                  <input type="text" class="form-control" name="tmcdio2" id="timepicker003"autocomplete="off">
+              </div>
+            </div>
+        </div>
+        <!-- Hide Show div 2 -->
+      <div class="row justify-content-center" style="padding: 15px 0px 0px;">
+        <div class="col-sm-6">
+            <label for="tla">Time left aerodrome</label>
+                <input type="text" class="form-control" name="tla" id="timepicker4" autocomplete="off">
+        </div>
+        <div class="col-sm-6">
+            <label for="sel1">Select camp arrival</label>
+            <select class="form-control" id="sel1" name="sca">
+              <option selected=selected>Select Camp</option>
+              <option value="mckay">McKay</option>
+              <option value="richardson">Richardson</option>
+              <option value="both">Both</option>
+            </select>
+          </div>
+        </div>
+        <div id="mckay">
+          <div class="row justify-content-center" style="padding: 15px 0px 0px;">
+            <div class="col-sm-6">
+              <label for="taamc">Time arrived at McKay camp</label>
+                  <input type="text" class="form-control" name="taamc" id="timepicker5" autocomplete="off">
+              </div>
+              <div class="col-sm-6">
+              <label for="tbcaoamc">Time baggage claim area open at McKay camp</label>
+                  <input type="text" class="form-control" name="tbcaoamc" id="timepicker6" autocomplete="off">
+              </div>
+          </div>
+        </div>
+        <div id="richardson">
+          <div class="row justify-content-center" style="padding: 15px 0px 0px;">
+            <div class="col-sm-6">
+              <label for="taarc">Time arrived at Richardson camp</label>
+              <input type="text" class="form-control" name="taarc" id="timepicker7" autocomplete="off">
+            </div>
+            <div class="col-sm-6">
+              <label for="tbcaorc">Time baggage claim area open at Richarson camp</label>
+              <input type="text" class="form-control" name="tbcaorc" id="timepicker8" autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <fieldset class="form-group" style="padding: 15px 0px 0px;">
+            <div class="row">
+              <legend class="col-form-label col-sm-6 pt-0">Were there any issue driving from aerodrome to camp(s)?</legend>
+              <div class="col-sm-6">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="wtaidfatc" id="wtaidfatc" value="1">
+                  <label class="form-check-label" for="wtaidfatc1">
+                    Yes
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="wtaidfatc" id="wtaidfatc" value="0">
+                  <label class="form-check-label" for="wtaidfatc2">
+                    No
+                  </label>
+                </div>
+              </div>
+            </div>
+        </fieldset>
+
+        <div class="issuetextarea">
+                  <div class="form-group row" style="padding: 15px 10px 0px;">
+                      <label for="raie" >Record any issues experienced</label>
+                          <textarea class="form-control" name="raie" placeholder="A brief description only"></textarea>
+                      </div>
+                  </div>
+
+        <div class="form-group row" style="padding: 15px 0px 0px;">
+            <div class="col-sm-12" style="text-align:center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+<!-- Start Footer Area -->
+<footer>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="copyright text-right">
+            <p>CONTACTS</p>
+            <p>IT Support : 1-844-291-8073</p>
+              <p>Email:<a href="mailto:support@efcaviation.ca"> support@efcaviation.ca </a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script type="text/javascript" src="http://localhost:3000/timpicker/src/wickedpicker.js"></script>
+
+<script>
+    $('#datepicker').datepicker({
+        uiLibrary: 'bootstrap4'
+    });
+  var options = {
+    now: "00:00",
+    twentyFour: true,
+    //clearable: true,
+  }
+  $('#timepicker1').wickedpicker(options);
+  $('#timepicker2').wickedpicker(options);
+  $('#timepicker3').wickedpicker(options);
+  $('#timepicker4').wickedpicker(options);
+  $('#timepicker5').wickedpicker(options);
+  $('#timepicker6').wickedpicker(options);
+  $('#timepicker7').wickedpicker(options);
+  $('#timepicker8').wickedpicker(options);
+
+  $('#timepicker01').wickedpicker(options);
+  $('#timepicker02').wickedpicker(options);
+  $('#timepicker03').wickedpicker(options);
+
+  $('#timepicker001').wickedpicker(options);
+  $('#timepicker002').wickedpicker(options);
+  $('#timepicker003').wickedpicker(options);
+
+$(document).ready(function(){
+    $('input[name="wtaf"]').click(function(){
+      var value = $(this).val();
+      if(value == 1){
+
+        $("#hide-show-1").show();
+        $("#flightNumber1").attr('required',true);
+        $("#timepicker01").attr('required',true);
+        $("#timepicker02").attr('required',true);
+        $("#timepicker03").attr('required',true);
+
+      }else{
+
+        $("#hide-show-1").hide();
+        $("#flightNumber1").attr('required',false);
+        $("#timepicker01").attr('required',false);
+        $("#timepicker02").attr('required',false);
+        $("#timepicker03").attr('required',false);
+
+        $("#flightNumber1").val('');
+        $("#timepicker01").val('');
+        $("#timepicker02").val('');
+        $("#timepicker03").val('');
+
+      }
+    });
+
+
+    $('input[name="wtaf1"]').click(function(){
+      var value = $(this).val();
+      if(value == 1){
+
+        $("#hide-show-2").show();
+        $("#flightNumber2").attr('required',true);
+        $("#timepicker001").attr('required',true);
+        $("#timepicker002").attr('required',true);
+        $("#timepicker003").attr('required',true);
+
+      }else{
+
+        $("#hide-show-2").hide();
+        $("#flightNumber2").attr('required',false);
+        $("#timepicker001").attr('required',false);
+        $("#timepicker002").attr('required',false);
+        $("#timepicker003").attr('required',false);
+
+        $("#flightNumber2").val('');
+        $("#timepicker001").val('');
+        $("#timepicker002").val('');
+        $("#timepicker003").val('');
+
+      }
+    });
+
+    $('input[name="wtaidfatc"]').click(function(){
+      var value = $(this).val();
+      if(value == 1){
+        $(".issuetextarea").show();
+        $("#raie").attr('required',true);
+      }else{
+        $(".issuetextarea").hide();
+        $("#raie").attr('required',false);
+        $("#raie").val('');
+      }
+    });
+
+    $('#sel1').change(function(){
+
+      if($(this).val() == 'mckay'){
+
+        $('#mckay').show();
+        $('#richardson').hide();
+
+      }else if($(this).val() == 'richardson'){
+
+        $('#richardson').show();
+        $('#mckay').hide();
+
+      }else if($(this).val() == 'both'){
+
+        $('#richardson').show();
+        $('#mckay').show();
+
+      }
+
+    });
+});
+
+
+</script>
+
+</body>
+</html>
